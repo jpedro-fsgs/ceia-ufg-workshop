@@ -1,4 +1,4 @@
-# Fundamentos de MLOps e Docker
+# CH1 - Fundamentos de MLOps e Docker
 
 O objetivo deste material é apresentar o contexto histórico que levou ao surgimento do Docker, explicar como ele funciona internamente e demonstrar como utilizá-lo no dia a dia do desenvolvimento e da implantação de software.
 
@@ -145,8 +145,8 @@ docker build -t ch1-mlops-intro .
 Após a construção, a imagem pode ser executada como um container local.
 
 ```bash
-docker run -v logs:/app/logs -p 9000:8000 ch1-mlops-intro # Linux
-docker run -v "%cd%/logs:/app/logs" -p 9000:8000 ch1-mlops-intro # Windows CMD
+docker run -v logs:/app/logs -p 8000:8000 ch1-mlops-intro # Linux
+docker run -v "%cd%/logs:/app/logs" -p 8000:8000 ch1-mlops-intro # Windows CMD
 ```
 
 Caso a aplicação exponha uma API, ela poderá ser acessada via navegador ou por ferramentas como curl ou Postman.
