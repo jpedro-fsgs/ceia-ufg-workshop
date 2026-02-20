@@ -9,7 +9,7 @@ uvicorn>=0.27.1
 
 # Manipulação de Dados e Datasets
 datasets>=2.20.0
-numpy>=1.26.4
+numpy==1.26.4
 scikit-learn>=1.4.0
 
 # LLM e Ambiente
