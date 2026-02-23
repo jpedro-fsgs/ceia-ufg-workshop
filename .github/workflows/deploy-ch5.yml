@@ -1,0 +1,76 @@
+# GitHub Actions — Deploy CH5: LLM Service
+#
+# Este workflow demonstra o pipeline completo de CI/CD:
+#
+#   Código no GitHub
+#       ↓  (push na main com mudanças em mlops/CH5/)
+#   GitHub Actions  ← este arquivo
+#       ↓  (dispara via gcloud)
+#   Google Cloud Build  ← cloudbuild.yaml
+#       ↓  (build da imagem Docker)
+#   Artifact Registry   ← imagem armazenada
+#       ↓  (deploy automático)
+#   Cloud Run           ← serviço rodando
+#
+# Secrets necessários no repositório GitHub
+# (Settings → Secrets and variables → Actions):
+#
+#   GCP_PROJECT_ID  → ID do projeto no Google Cloud
+#   GCP_SA_KEY      → JSON da Service Account com permissões de Cloud Build
+
+name: Deploy CH5 — LLM Service
+
+# ============================================================
+# TRIGGER: quando acionar este workflow
+# ============================================================
+on:
+  push:
+    branches:
+      - main                  # Apenas na branch principal
+    paths:
+      - 'mlops/CH5/**'        # Apenas quando arquivos do CH5 mudarem
+
+# ============================================================
+# JOB: sequência de passos a executar
+# ============================================================
+jobs:
+  deploy:
+    name: Build & Deploy via Cloud Build
+    runs-on: ubuntu-latest    # Runner: máquina virtual Ubuntu no GitHub
+
+    steps:
+      # ----------------------------------------------------------
+      # 1. Baixa o código do repositório para o runner
+      # ----------------------------------------------------------
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # ----------------------------------------------------------
+      # 2. Autentica no Google Cloud usando a Service Account
+      #    A chave JSON fica armazenada como secret no GitHub,
+      #    nunca exposta no código.
+      # ----------------------------------------------------------
+      - name: Autenticar no Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # ----------------------------------------------------------
+      # 3. Instala e configura o gcloud CLI no runner
+      # ----------------------------------------------------------
+      - name: Configurar gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      # ----------------------------------------------------------
+      # 4. Submete o build ao Cloud Build
+      #    O Cloud Build executa o cloudbuild.yaml, que:
+      #      - Faz build da imagem Docker
+      #      - Envia a imagem para o Artifact Registry
+      #      - Faz deploy no Cloud Run
+      # ----------------------------------------------------------
+      - name: Submeter build ao Cloud Build
+        run: |
+          gcloud builds submit \
+            --project=${{ secrets.GCP_PROJECT_ID }} \
+            --config=mlops/CH5/pratica/cloudbuild.yaml \
+            mlops/CH5/pratica/

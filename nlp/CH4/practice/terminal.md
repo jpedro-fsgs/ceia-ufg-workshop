@@ -1,0 +1,89 @@
+# Tutorial para rodar o projeto (CH4)
+
+## 1) Pré-requisitos
+
+- Python 3.10+
+- Docker instalado e em execução
+- Chave da OpenAI válida
+
+## 2) Entrar na pasta do capítulo
+
+```bash
+cd nlp/CH4/practice
+```
+
+## 3) Criar e ativar ambiente virtual
+
+```bash
+python3 -m venv venv
+```
+
+Ativar no Linux/macOS:
+
+```bash
+source venv/bin/activate
+```
+
+Ativar no Windows (PowerShell):
+
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+## 4) Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+## 5) Subir o Qdrant
+
+```bash
+docker run -p 6333:6333 -d qdrant/qdrant
+```
+
+> A flag `-d` executa o container em segundo plano.
+
+## 6) Configurar variáveis de ambiente
+
+Crie um arquivo `.env` na raiz de `nlp/CH4/practice` com:
+
+```env
+OPENAI_API_KEY=sk-sua-chave-aqui
+```
+
+## 7) Executar scripts do projeto
+
+### Ingestão no Qdrant
+
+```bash
+python3 src/ingestion.py
+```
+
+### Avaliação de métricas (100 primeiros IDs)
+
+```bash
+python3 src/metrics.py
+```
+
+### Teste de RAG via terminal
+
+```bash
+python3 -m src.api
+```
+
+### Subir API
+
+```bash
+python3 src/api.py
+```
+
+## 8) Testar endpoint da API
+
+Com a API rodando, em outro terminal execute:
+
+```bash
+curl -X POST "http://localhost:8000/rag" \
+ -H "Content-Type: application/json" \
+ -d '{"pergunta":"When did Beyonce start becoming popular?"}'
+```

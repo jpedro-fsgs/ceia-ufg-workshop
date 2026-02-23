@@ -1,0 +1,12 @@
+# Framework web
+fastapi==0.119.0
+uvicorn[standard]==0.37.0
+
+# Validação de dados
+pydantic==2.12.3
+
+# Cliente OpenAI (compatível com OpenRouter)
+openai>=1.0.0
+
+# Variáveis de ambiente
+python-dotenv==1.1.1

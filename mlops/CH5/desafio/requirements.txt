@@ -1,0 +1,5 @@
+# Interface de chat
+streamlit>=1.35.0
+
+# Chamadas HTTP para a API
+requests>=2.32.0

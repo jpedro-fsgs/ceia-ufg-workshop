@@ -1,7 +1,3 @@
-Aqui está o **README do CH5 de NLP**, seguindo suas exigências: sem listas em tópicos, sem emojis, com texto técnico e descritivo, dividido em subtítulos e contendo comandos de quickstart.
-
----
-
 # CH5 — Integração Final, Avaliação e Deploy de Sistemas de NLP em Produção
 
 ## Contexto e Objetivo do Capítulo
@@ -137,4 +133,3 @@ git push origin model-v1.0
 Este capítulo representa a transição final entre aprendizado conceitual e aplicação prática em ambientes reais. Ao concluir este módulo, o participante terá vivenciado o ciclo completo de desenvolvimento de um sistema de NLP, desde fundamentos teóricos até deploy e monitoramento em produção.
 
 A experiência adquirida neste capítulo fornece uma base sólida para atuação profissional em projetos de NLP, engenharia de machine learning, sistemas inteligentes e aplicações baseadas em modelos de linguagem em larga escala.
-
