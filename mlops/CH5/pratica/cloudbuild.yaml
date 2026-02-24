@@ -32,7 +32,7 @@ steps:
       - '-t'
       - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:latest'
       - '-f'
-      - 'pipelines/api-blackbox/Dockerfile.prod'
+      - 'Dockerfile.prod'
       - '.'
 
     # Logs informativos
