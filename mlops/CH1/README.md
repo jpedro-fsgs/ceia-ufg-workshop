@@ -155,7 +155,28 @@ Caso a aplicação exponha uma API, ela poderá ser acessada via navegador ou po
 curl http://localhost:8000/
 ```
 
+## Docker Compose
+
+O Docker Compose é uma ferramenta que permite definir e executar aplicações que utilizam múltiplos containers de forma declarativa, utilizando um único arquivo YAML, geralmente chamado de `docker-compose.yml`. Ele atua como uma camada de orquestração local sobre o Docker, facilitando o gerenciamento de serviços, redes e volumes necessários para uma aplicação.
+
+Com o Docker Compose, todo o ambiente da aplicação passa a ser descrito como código, incluindo a imagem utilizada, variáveis de ambiente, mapeamento de portas, volumes para persistência de dados e dependências entre serviços. Isso torna o processo de execução mais simples, reprodutível e menos sujeito a erros manuais, especialmente em projetos que envolvem mais de um container.
+
+Em vez de executar múltiplos comandos `docker build` e `docker run`, o desenvolvedor pode subir toda a aplicação com um único comando, garantindo que todos os serviços sejam iniciados na ordem correta e com as configurações esperadas. Essa abordagem é amplamente utilizada em ambientes de desenvolvimento, testes e homologação, sendo também compatível com fluxos de MLOps que exigem consistência entre diferentes máquinas e times.
+
+O Docker Compose é parte fundamental do ecossistema do Docker e se integra de forma nativa ao Docker Engine. Ele reforça princípios importantes como infraestrutura como código, padronização de ambientes e facilidade de onboarding de novos desenvolvedores, permitindo que qualquer pessoa execute a aplicação localmente com poucos comandos.
+
+Em cenários de Machine Learning e MLOps, o Docker Compose é especialmente útil para executar pipelines locais que envolvem APIs, serviços de inferência, bancos de dados, sistemas de logging e ferramentas auxiliares, simulando de forma fiel ambientes mais complexos que futuramente podem ser migrados para soluções de orquestração em larga escala.
+
+
+Para rodar a aplicação utilizando o Docker Compose, basta executar o comando:
+
+```bash
+docker compose up --build
+```
+
 ---
+
+
 
 ## Materiais
 
