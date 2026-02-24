@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    image: ch1-mlops-intro
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs

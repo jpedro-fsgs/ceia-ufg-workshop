@@ -54,7 +54,7 @@ data/documents/*.md|*.txt|*.pdf
 ```bash
 cd nlp/CH5/practice
 python3 -m venv .venv
-source .venv/bin/activate # ou .venv\Scripts\activate no Windows
+source venv/bin/activate # ou venv\Scripts\activate no Windows
 pip install -r requirements.txt
 ```
 

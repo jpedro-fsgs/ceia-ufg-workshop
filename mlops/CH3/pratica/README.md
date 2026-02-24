@@ -6,7 +6,7 @@ API de perguntas e respostas sobre documentos construída com **FastAPI**, **Lan
 ┌─────────────────────────────────────────────────────┐
 │  Você faz upload de um PDF                          │
 │       ↓                                             │
-│  LangChain divide em chunks → OpenAI embeddings     │
+│  LangChain divide em chunks → embeddings (OpenAI ou Google) │
 │       ↓                                             │
 │  ChromaDB armazena os vetores                       │
 │       ↓                                             │
@@ -120,9 +120,11 @@ A resposta inclui o campo `provider` indicando se foi `"openai"` ou `"gemini"` q
 
 | Variável | Obrigatória | Descrição |
 |----------|-------------|-----------|
-| `OPENAI_API_KEY` | Sim | Chave da OpenAI |
-| `GOOGLE_API_KEY` | Não | Chave Google AI — ativa o fallback Gemini |
+| `OPENAI_API_KEY` | Sim¹ | Chave da OpenAI |
+| `GOOGLE_API_KEY` | Sim¹ | Chave Google AI — embeddings e fallback Gemini |
 | `GOOGLE_MODEL` | Não | Modelo Gemini (padrão: `gemini-2.0-flash`) |
+
+> ¹ Pelo menos uma das duas chaves é obrigatória. Se ambas estiverem definidas, **OpenAI é preferida** tanto para embeddings quanto para geração de resposta (Gemini fica como fallback automático).
 | `OPENAI_MODEL` | Não | Modelo OpenAI (padrão: `gpt-4o-mini`) |
 | `APP_USER` | Não | Credenciais `usuario:senha` (padrão: `admin:changeme`) |
 | `SECRET_KEY` | Não | Chave JWT — gere com `openssl rand -hex 32` |
