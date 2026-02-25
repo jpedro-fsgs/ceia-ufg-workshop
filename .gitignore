@@ -8,3 +8,4 @@
 *.pyd
 *.log
 *.sqlite3
+sa-key.json
