@@ -31,12 +31,12 @@ async def chat_completion(
         ...,
         example={
             "messages": [{"role": "user", "content": "Olá! Quem é você?"}],
-            "model": "gemini-2.5-flash",
+            "model": "gpt-4o-mini",
         },
     ),
 ):
     """
-    Envia mensagens para um LLM (Gemini) e retorna a resposta.
+    Envia mensagens para um LLM (OpenAI) e retorna a resposta.
 
     O sistema injeta automaticamente o SYSTEM_PROMPT antes das mensagens
     do usuário para definir o comportamento do assistente.
@@ -45,7 +45,7 @@ async def chat_completion(
         POST /chat
         {
           "messages": [{"role": "user", "content": "Olá! Quem é você?"}],
-          "model": "gemini-2.0-flash"
+                    "model": "gpt-4o-mini"
         }
     """
     client = get_client()
@@ -81,12 +81,12 @@ async def chat_completion_stream(
         ...,
         example={
             "messages": [{"role": "user", "content": "Olá! Quem é você?"}],
-            "model": "gemini-2.5-flash",
+            "model": "gpt-4o-mini",
         },
     ),
 ):
     """
-    Envia mensagens para um LLM (Gemini) e retorna a resposta em stream SSE.
+    Envia mensagens para um LLM (OpenAI) e retorna a resposta em stream SSE.
 
     Eventos SSE emitidos em `data:`:
     - {"type": "token", "content": "..."}

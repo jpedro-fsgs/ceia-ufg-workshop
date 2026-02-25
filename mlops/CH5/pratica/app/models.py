@@ -29,7 +29,7 @@ class ChatRequest(BaseModel):
     Exemplo:
         {
             "messages": [{"role": "user", "content": "Olá!"}],
-            "model": "gemini-2.0-flash",
+            "model": "gpt-4o-mini",
             "temperature": 0.7
         }
     """
@@ -37,9 +37,9 @@ class ChatRequest(BaseModel):
     messages: list[ChatMessage] = Field(..., description="Histórico da conversa")
 
     model: str = Field(
-        "gemini-2.0-flash",
-        description="Modelo Gemini a ser utilizado",
-        examples=["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"],
+        "gpt-4o-mini",
+        description="Modelo OpenAI a ser utilizado",
+        examples=["gpt-4o-mini", "gpt-4.1-mini", "gpt-4.1"],
     )
 
     temperature: float = Field(
