@@ -104,3 +104,8 @@ steps:
 images:
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}'
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:latest'
+
+
+# ========== TIMEOUT ==========
+# Timeout global do build
+timeout: 1200s
