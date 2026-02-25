@@ -165,20 +165,20 @@ gcloud iam service-accounts create github-deployer \
 Conceder as permissões necessárias (Cloud Build, Cloud Run, Service Account e Storage):
 
 ```bash
-gcloud projects add-iam-policy-binding SEU_PROJECT_ID \
-  --member="serviceAccount:github-deployer@SEU_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding novo-projeto-488221 \
+  --member="serviceAccount:github-deployer@novo-projeto-488221.iam.gserviceaccount.com" \
   --role="roles/cloudbuild.builds.editor"
 
-gcloud projects add-iam-policy-binding SEU_PROJECT_ID \
-  --member="serviceAccount:github-deployer@SEU_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding novo-projeto-488221 \
+  --member="serviceAccount:github-deployer@novo-projeto-488221.iam.gserviceaccount.com" \
   --role="roles/run.admin"
 
-gcloud projects add-iam-policy-binding SEU_PROJECT_ID \
-  --member="serviceAccount:github-deployer@SEU_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding novo-projeto-488221 \
+  --member="serviceAccount:github-deployer@novo-projeto-488221.iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 
-gcloud projects add-iam-policy-binding SEU_PROJECT_ID \
-  --member="serviceAccount:github-deployer@SEU_PROJECT_ID.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding novo-projeto-488221 \
+  --member="serviceAccount:github-deployer@novo-projeto-488221.iam.gserviceaccount.com" \
   --role="roles/storage.admin"
 ```
 
@@ -186,7 +186,7 @@ Gerar e baixar a chave JSON:
 
 ```bash
 gcloud iam service-accounts keys create sa-key.json \
-  --iam-account=github-deployer@SEU_PROJECT_ID.iam.gserviceaccount.com
+  --iam-account=github-deployer@novo-projeto-488221.iam.gserviceaccount.com
 ```
 
 > **Atenção:** nunca faça commit deste arquivo. Adicione `sa-key.json` ao seu `.gitignore`.

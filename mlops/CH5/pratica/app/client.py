@@ -24,6 +24,10 @@ def get_client() -> AsyncOpenAI:
 
     A variável GOOGLE_API_KEY deve estar definida no ambiente.
     """
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise ValueError("GOOGLE_API_KEY environment variable is not set")
+    
     return AsyncOpenAI(
         api_key=os.getenv("GOOGLE_API_KEY"),
         base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
