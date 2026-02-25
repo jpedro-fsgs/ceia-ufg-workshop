@@ -28,7 +28,7 @@ on:
     branches:
       - main                  # Apenas na branch principal
     paths:
-      - 'mlops/CH5/pratica'        # Apenas quando arquivos do CH5 mudarem
+      - 'mlops/CH5/pratica/**'        # Apenas quando arquivos do CH5 mudarem
 
 # ============================================================
 # JOB: sequência de passos a executar
